@@ -187,17 +187,16 @@ Specifically, when resuming training, you can use the `--resume_checkpoint` para
 ### 5. Evaluation
 <a href="#top">[Back to top]</a>
 
-If you only want to evaluate the FaceShield, you can use the the [`test.py`](./test.py) code for evaluation. Here is an example:
+Two evaluation scripts are provided to assess the effectiveness of the trained models:  
 
-```
-python .\test.py \
--img ./Original/img1.jpg \
--e 0.1 \
---seed 42 \
--save ./Perturbed 
-```
+1. **test_iid_detector.py**: Designed for rapid inference, this script allows you to specify a directory containing facial images to be evaluated (including any custom deepfake content). It returns the detector’s prediction results for each sample.  
+2. **test_eval_iid_datasets.py**: Used for comprehensive performance evaluation of the detector, this script reports aggregated metrics such as AUC, ACC, and EER across different test datasets.
 
-**Please Note that before evaluation**, you need to download the publicly available pretrained weights from the provided [`link`](https://pan.baidu.com/s/1YO1BPD8ZXlgml2evNUoqTQ?pwd=wevq)(Including FSE, IRC and encoder trained with bone intervention) and ensure that these weights are placed in the corresponding location within the weights directory.
+In addition, we provide scripts for visualizing Figures 8 and 9 in the paper. Specifically, you can navigate to the `ModelName/tools` directory and select the desired script to execute:  
+
+1. **visualize_cosine_iid.py**: Plots the cosine similarity between the latent-space identity representations extracted by ModelName and the corresponding surface-space identities. You need to specify the `--checkpoint` parameter to point to your pretrained weights and adjust the `--dataset` parameter to select the test set to be processed.  
+2. **visualize_tsne_iid_ori.py**: Visualizes the baseline model’s ability to distinguish between real and fake samples. You can modify the `--aggregate` parameter to indicate whether the dimensionality reduction is performed based on video IDs or image IDs.  
+3. **visualize_tsne_iid.py**: Visualizes the pretrained model’s discrimination capability between real and fake samples.
 
 ## 🏆 Results
 
