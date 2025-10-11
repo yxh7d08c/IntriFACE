@@ -154,17 +154,24 @@ If you choose to store the datasets elsewhere, you can specify the path via `rgb
 
 <a href="#top">[Back to top]</a>
 
-To select active neurons during the training process and normalize the output of each separation layer, please follow the steps below:
-
-1. Navigate to the preprocess directory and modify the `--data_root` parameter in the `generate.py` to point to the actual path where the dataset is stored.
-
-2. Execute the `generate.py` script within the virtual environment FaceShield.
-
-3. The output weight information will be saved to the `...\FaceShield\modules\weights128` directory.
+To stabilize data partitioning and labeling, reduce the training cost of ModelName, and enhance its training efficiency, you should first execute the following command to unify multi-source datasets into an intuitive sample list. This operation also facilitates reproducibility for other researchers.
 
 ```
-cd preprocess
-python generate.py --data_root your_dataset_path --batch_size 32
+cd ModelName/generate_data
+python rearrange.py
+```
+
+You can specify the datasets to be processed and their root directories in `generate_data/config.yaml`. In addition, when employing the Information Bottleneck component to extract facial identity representations, it is necessary to pre-generate the dataset distribution information to ensure dynamic adjustment of active neurons during training and to regularize the feature outputs of each layer. Please follow the steps below:
+
+1. Navigate to the `ModelName/utils` directory and modify the `--data_root` parameter in the `compute_statistics.py` to point to the actual path where the dataset is stored.
+
+2. Execute the `compute_statistics.py` script within the virtual environment ModelName.
+
+3. The output weight information will be saved to the `ModelName/models` directory.
+
+```
+cd ModelName/utils
+python compute_statistics.py --data_root your_dataset_path --batch_size 32
 ```
 
 ### 4. Training
