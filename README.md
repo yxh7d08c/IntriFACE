@@ -12,22 +12,23 @@
   <img src="figures/framework.png" style="max-width:60%;">
 </div>
 
-Welcome to FaceShield, your high-fidelity and provable facial privacy protection platform! Here are some key features of our platform:
+Welcome to ModelName, a highly generalizable and discriminative deepfake face detector that establishes a reliable barrier between you and the synthetic world. The following provides key information about this detector: 
 
-> 📌 **Feature disentanglement**: *FaceShield* leverages joint statistical and spatial independence constraints to maximally disentangle facial identity and perceptual content, thereby separating identity perturbation from perceptual preservation.
+> 📌 **New Perspective**: *ModelName* captures the intrinsic commonality among deepfake faces rather than relying on low-level visual artifacts, thereby maintaining strong generalization across numerous unseen scenarios.
 > 
-> 📌 **Practical Sampling**: *FaceShield* decomposes high-dimensional identity perturbation into two tractable sub-processes, thereby reducing computational overhead in high-dimensional scenarios.
+> 📌 **Perceptual Removal**: *ModelName* effectively eliminates perceptual interference embedded in facial images, enabling the extraction of purer identity representations.
 > 
-> 📌 **Comprehensive Protection**: *FaceShield* prevents unintended identity leakage arising from the perceptual latent space, offering users comprehensive facial privacy protection.
+> 📌 **Advanced Purification**: *ModelName* suppresses irrelevant identity components while enhancing relevant ones within the extracted representation, isolating the most discriminative identity features.
 > 
-> 📌 **Extensive Evaluation**: *FaceShield* offers users a superior and reliable solution in terms of naturalness, perceptual fidelity, privacy protection, and efficiency.
+> 📌 **Outstanding Performance**: Extensive experiments demonstrate that *ModelName* achieves remarkable results in generalization, robustness, and identity discriminability, highlighting its potential as a universal solution for deepfake face detection.
+
 
 ---
 
-## 😊 **FaceShield Updates**
+## 😊 **ModelName Updates**
 > - [ ] To be supplemented code after acceptance...
 >
-> - [x] 20/09/2025: *First version pre-released for this open source code.* 
+> - [x] 14/11/2025: *First version pre-released for this open source code.* 
 ---
 
 <font size=4><b> Table of Contents </b></font>
@@ -52,34 +53,102 @@ Welcome to FaceShield, your high-fidelity and provable facial privacy protection
 You can run the following script to configure the necessary environment:
 
 ```
-git clone git@github.com:huiyuchen708/FaceShield.git
-cd FaceShield
-conda create -n FaceShield python=3.10.16
-conda activate FaceShield
+git clone git@github.com:huiyuchen708/ModelName.git
+cd ModelName
+conda create -n ModelName python=3.10.16
+conda activate ModelName
 pip install -r requirements.txt
 ```
 
 ### 2. Download Data
 <a href="#top">[Back to top]</a>
 
+All datasets used in ModelName can be downloaded from their corresponding original repositories. For convenience, we provide a subset of the datasets employed in our study (the remaining ones are sourced from existing works). Each provided dataset has been preprocessed into aligned facial frames (32 frames per video) along with corresponding masks and landmarks, allowing others to directly deploy these faces for evaluating ModelName. 
+
+The download links and detailed information for each dataset are summarized below:
+
+| Dataset | Real Videos | Fake Videos | Total Videos | Rights Cleared | Total Subjects | Synthesis Methods | Original Repository |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| FaceForensics++ | 1000 | 4000 | 5000 | NO | N/A | 4 | [Hyper-link](https://github.com/ondyari/FaceForensics/tree/master/dataset) |
+| FaceShifter | 1000 | 1000 | 2000 | NO | N/A | 1 | [Hyper-link](https://github.com/ondyari/FaceForensics/tree/master/dataset) |
+| DeepfakeDetection | 363 | 3000 | 3363 | YES | 28 | 5 | [Hyper-link](https://github.com/ondyari/FaceForensics/tree/master/dataset) |
+| Deepfake Detection Challenge (Preview) | 1131 | 4119 | 5250 | YES | 66 | 2 | [Hyper-link](https://ai.facebook.com/datasets/dfdc/) |
+| Deepfake Detection Challenge | 23654 | 104500 | 128154 | YES | 960 | 8 | [Hyper-link](https://www.kaggle.com/c/deepfake-detection-challenge/data) |
+| CelebDF-v1 | 408 | 795 | 1203 | NO | N/A | 1 | [Hyper-link](https://ours) |
+| CelebDF-v2 | 590 | 5639 | 6229 | NO | 59 | 1 | [Hyper-link](https://ours) |
+| UADFV | 49 | 49 | 98 | NO | 49 | 1 | [Hyper-link](https://ours) |
+
+In addition, the image dataset CASIA-FACEV5 used in the evaluation can be downloaded [here](https://huggingface.co/datasets/student/FFHQ).
+
 🛡️ **Copyright of the above datasets belongs to their original providers.**
 
-1. Downloading [FF-HQ](https://huggingface.co/datasets/student/FFHQ) *Original* dataset for training data preparation. and [VGGface2](https://github.com/NNNNAI/VGGFace2-HQ) dataset to evaluate the published baseline. Here, we present the preprocessing results for the aforementioned datasets. Specifically, the facial images underwent re-indexing to ensure clearer identification during both the training and testing phases.[Quark, Password: EWvv](https://pan.quark.cn/s/b719f9c34a9c?pwd=EWvv)
-
-2. Upon downloading the datasets, please ensure to store them in the [`./content`](./content/) folder, arranging them in accordance with the directory structure outlined below:
+After downloading, please store the datasets in the `datasets/rgb` directory and organize them according to the following structure. 
 
 ```
-content
-├── FF-HQ
-|   ├── id* (if you download my processed data)
-|   |   ├── *.png
-├── VGGface2
-|   ├── id* (if you download my processed data)
-|   |   ├── *.jpg
+rgb
+├── Celeb-DF-v2 (if you download my processed data)
+|   ├── Celeb-real
+|   |   ├── frames
+|   |   |   ├── id0_0000
+|   |   |   |   ├── 000.png
+|   |   |   |   ├── ...
+|   |   |   ├── idx_xxxx
+|   |   |   ├── ...
+|   |   ├── landmarks
+|   |   |   ├── id0_0000
+|   |   |   |   ├── 000.npy
+|   |   |   ├── idx_xxxx
+|   |   |   ├── ...
+|   ├── Celeb-synthesis
+|   |   ├── frames
+|   |   |   ├── id0_id1_0000
+|   |   |   |   ├── 000.png
+|   |   |   ├── idx_idx_xxxx
+|   |   |   ├── ...
+|   |   ├── landmarks
+|   |   |   ├── id0_id1_0000
+|   |   |   |   ├── 000.npy
+|   |   |   ├── idx_idx_xxxx
+|   |   |   ├── ...
+|   ├── YouTube-real
+|   |   ├── frames
+|   |   |   ├── 00000
+|   |   |   |   ├── 000.png
+|   |   |   ├── xxxxx
+|   |   |   ├── ...
+|   |   ├── landmarks
+|   |   |   ├── 00000
+|   |   |   |   ├── 000.npy
+|   |   |   ├── xxxxx
+|   |   |   ├── ...
+|   ├── List_of_testing_videos.txt
+├── UADFV (if you download my processed data)
+|   ├── fake
+|   |   ├── frames
+|   |   |   ├── 0000_fake
+|   |   |   |   ├── 000.png
+|   |   |   ├── xxxx_fake
+|   |   |   ├── ...
+|   |   ├── landmarks
+|   |   |   ├── 0000_fake
+|   |   |   |   ├── 000.npy
+|   |   |   ├── xxxx_fake
+|   |   |   ├── ...
+|   ├── real
+|   |   ├── frames
+|   |   |   ├── 0000
+|   |   |   |   ├── 000.png
+|   |   |   ├── xxxx
+|   |   |   ├── ...
+|   |   ├── landmarks
+|   |   |   ├── 0000
+|   |   |   |   ├── 000.npy
+|   |   |   ├── xxxx
+|   |   |   ├── ...
 Other datasets are similar to the above structure
 ```
 
-If you choose to store your datasets in a different folder, you may specified the `data_root` in `train_Reconstructor.py` and `train_SeparationExtractor.py`.
+If you choose to store the datasets elsewhere, you can specify the path via `rgb_dir` in `training/test_config.yaml` and `training/train_config.yaml`. You may also specify a different location for configuration files by setting `dataset_json_folder` in the same configuration files.
 
 ### 3. Preprocessing
 
