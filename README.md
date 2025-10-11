@@ -176,7 +176,7 @@ python compute_statistics.py --data_root your_dataset_path --batch_size 32
 ### 4. Training
 <a href="#top">[Back to top]</a>
 
-To start training, use the following command:
+To start training, you first need to download the required [pretrained weights](https://drive.google.com/drive/folders/1-TGxK2pwQKez-S7QoYJ8Y3ImXhz1tQiY?usp=sharing). Then, execute the following command to begin training:
 
 ```
 CUDA_VISIBLE_DEVICES=2,3 nohup torchrun --nproc_per_node=2 train.py > train.log 2>&1 &
