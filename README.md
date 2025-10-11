@@ -9,7 +9,7 @@
 <div align="center"> 
 </div>
 <div style="text-align:center;">
-  <img src="figures/framework.png" style="max-width:60%;">
+  <img src="figures/framework.jpg" style="max-width:60%;">
 </div>
 
 Welcome to IntriFace, a highly generalizable and discriminative deepfake face detector that establishes a reliable barrier between you and the synthetic world. The following provides key information about this detector: 
