@@ -1,4 +1,4 @@
-# ModelName: Deepfake face detector
+# IntriFace: Modeling Intrinsic Forgery Identity through Latent Representation for Generalizable Deepfake Detection
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc/4.0/) ![PyTorch](https://img.shields.io/badge/Pytorch-2.6.0-brightgreen) ![Python](https://img.shields.io/badge/Python-3.10.16-brightgreen)
 
@@ -12,20 +12,20 @@
   <img src="figures/framework.png" style="max-width:60%;">
 </div>
 
-Welcome to ModelName, a highly generalizable and discriminative deepfake face detector that establishes a reliable barrier between you and the synthetic world. The following provides key information about this detector: 
+Welcome to IntriFace, a highly generalizable and discriminative deepfake face detector that establishes a reliable barrier between you and the synthetic world. The following provides key information about this detector: 
 
-> 📌 **New Perspective**: *ModelName* captures the intrinsic commonality among deepfake faces rather than relying on low-level visual artifacts, thereby maintaining strong generalization across numerous unseen scenarios.
+> 📌 **New Perspective**: *IntriFace* captures the intrinsic commonality among deepfake faces rather than relying on low-level visual artifacts, thereby maintaining strong generalization across numerous unseen scenarios.
 > 
-> 📌 **Perceptual Removal**: *ModelName* effectively eliminates perceptual interference embedded in facial images, enabling the extraction of purer identity representations.
+> 📌 **Perceptual Removal**: *IntriFace* effectively eliminates perceptual interference embedded in facial images, enabling the extraction of purer identity representations.
 > 
-> 📌 **Advanced Purification**: *ModelName* suppresses irrelevant identity components while enhancing relevant ones within the extracted representation, isolating the most discriminative identity features.
+> 📌 **Advanced Purification**: *IntriFace* suppresses irrelevant identity components while enhancing relevant ones within the extracted representation, isolating the most discriminative identity features.
 > 
-> 📌 **Outstanding Performance**: Extensive experiments demonstrate that *ModelName* achieves remarkable results in generalization, robustness, and identity discriminability, highlighting its potential as a universal solution for deepfake face detection.
+> 📌 **Outstanding Performance**: Extensive experiments demonstrate that *IntriFace* achieves remarkable results in generalization, robustness, and identity discriminability, highlighting its potential as a universal solution for deepfake face detection.
 
 
 ---
 
-## 😊 **ModelName Updates**
+## 😊 **IntriFace Updates**
 > - [ ] To be supplemented code after acceptance...
 >
 > - [x] 14/11/2025: *First version pre-released for this open source code.* 
@@ -53,17 +53,17 @@ Welcome to ModelName, a highly generalizable and discriminative deepfake face de
 You can run the following script to configure the necessary environment:
 
 ```
-git clone git@github.com:huiyuchen708/ModelName.git
-cd ModelName
-conda create -n ModelName python=3.10.16
-conda activate ModelName
+git clone git@github.com:huiyuchen708/IntriFACE.git
+cd IntriFACE
+conda create -n IntriFace python=3.10.16
+conda activate IntriFace
 pip install -r requirements.txt
 ```
 
 ### 2. Download Data
 <a href="#top">[Back to top]</a>
 
-All datasets used in ModelName can be downloaded from their corresponding original repositories. For convenience, we provide a subset of the datasets employed in our study (the remaining ones are sourced from existing works). Each provided dataset has been preprocessed into aligned facial frames (32 frames per video) along with corresponding masks and landmarks, allowing others to directly deploy these faces for evaluating ModelName. 
+All datasets used in IntriFace can be downloaded from their corresponding original repositories. For convenience, we provide a subset of the datasets employed in our study (the remaining ones are sourced from existing works). Each provided dataset has been preprocessed into aligned facial frames (32 frames per video) along with corresponding masks and landmarks, allowing others to directly deploy these faces for evaluating IntriFace. 
 
 The download links and detailed information for each dataset are summarized below:
 
@@ -78,7 +78,7 @@ The download links and detailed information for each dataset are summarized belo
 | CelebDF-v2 | 590 | 5639 | 6229 | NO | 59 | 1 | [Hyper-link](https://ours) |
 | UADFV | 49 | 49 | 98 | NO | 49 | 1 | [Hyper-link](https://ours) |
 
-In addition, the image dataset CASIA-FACEV5 used in the evaluation can be downloaded [here](https://huggingface.co/datasets/student/FFHQ).
+In addition, the image dataset CASIA-FACEV5 used in the evaluation can be downloaded [here](https://ours).
 
 🛡️ **Copyright of the above datasets belongs to their original providers.**
 
@@ -153,23 +153,23 @@ If you choose to store the datasets elsewhere, you can specify the path via `rgb
 ### 3. Preprocessing
 <a href="#top">[Back to top]</a>
 
-To stabilize data partitioning and labeling, reduce the training cost of ModelName, and enhance its training efficiency, you should first execute the following command to unify multi-source datasets into an intuitive sample list. This operation also facilitates reproducibility for other researchers.
+To stabilize data partitioning and labeling, reduce the training cost of IntriFace, and enhance its training efficiency, you should first execute the following command to unify multi-source datasets into an intuitive sample list. This operation also facilitates reproducibility for other researchers.
 
 ```
-cd ModelName/generate_data
+cd IntriFACE/generate_data
 python rearrange.py
 ```
 
 You can specify the datasets to be processed and their root directories in `generate_data/config.yaml`. In addition, when employing the Information Bottleneck component to extract facial identity representations, it is necessary to pre-generate the dataset distribution information to ensure dynamic adjustment of active neurons during training and to regularize the feature outputs of each layer. Please follow the steps below:
 
-1. Navigate to the `ModelName/utils` directory and modify the `--data_root` parameter in the `compute_statistics.py` to point to the actual path where the dataset is stored.
+1. Navigate to the `IntriFACE/utils` directory and modify the `--data_root` parameter in the `compute_statistics.py` to point to the actual path where the dataset is stored.
 
-2. Execute the `compute_statistics.py` script within the virtual environment ModelName.
+2. Execute the `compute_statistics.py` script within the virtual environment IntriFace.
 
-3. The output weight information will be saved to the `ModelName/models` directory.
+3. The output weight information will be saved to the `IntriFACE/models` directory.
 
 ```
-cd ModelName/utils
+cd IntriFACE/utils
 python compute_statistics.py --data_root your_dataset_path --batch_size 32
 ```
 
@@ -189,20 +189,20 @@ Specifically, when resuming training, you can use the `--resume_checkpoint` para
 
 Two evaluation scripts are provided to assess the effectiveness of the trained models:  
 
-1. **test_iid_detector.py**: Designed for rapid inference, this script allows you to specify a directory containing facial images to be evaluated (including any custom deepfake content). It returns the detector’s prediction results for each sample.  
-2. **test_eval_iid_datasets.py**: Used for comprehensive performance evaluation of the detector, this script reports aggregated metrics such as AUC, ACC, and EER across different test datasets.
+1. **test_IntriFace.py**: Designed for rapid inference, this script allows you to specify a directory containing facial images to be evaluated (including any custom deepfake content). It returns the detector’s prediction results for each sample.  
+2. **test_IntriFace_datasets.py**: Used for comprehensive performance evaluation of the detector, this script reports aggregated metrics such as AUC, ACC, and EER across different test datasets.
 
-In addition, we provide scripts for visualizing Figures 8 and 9 in the paper. Specifically, you can navigate to the `ModelName/tools` directory and select the desired script to execute:  
+In addition, we provide scripts for visualizing Figures 8 and 9 in the paper. Specifically, you can navigate to the `IntriFACE/tools` directory and select the desired script to execute:  
 
-1. **visualize_cosine_iid.py**: Plots the cosine similarity between the latent-space identity representations extracted by ModelName and the corresponding surface-space identities. You need to specify the `--checkpoint` parameter to point to your pretrained weights and adjust the `--dataset` parameter to select the test set to be processed.  
-2. **visualize_tsne_iid_ori.py**: Visualizes the baseline model’s ability to distinguish between real and fake samples. You can modify the `--aggregate` parameter to indicate whether the dimensionality reduction is performed based on video IDs or image IDs.  
-3. **visualize_tsne_iid.py**: Visualizes the pretrained model’s discrimination capability between real and fake samples.
+1. **visualize_cosine.py**: Plots the cosine similarity between the latent-space identity representations extracted by IntriFace and the corresponding surface-space identities. You need to specify the `--checkpoint` parameter to point to your pretrained weights and adjust the `--dataset` parameter to select the test set to be processed.  
+2. **visualize_tsne_ori.py**: Visualizes the baseline model’s ability to distinguish between real and fake samples. You can modify the `--aggregate` parameter to indicate whether the dimensionality reduction is performed based on video IDs or image IDs.  
+3. **visualize_tsne.py**: Visualizes the pretrained model’s discrimination capability between real and fake samples.
 
 ## 🏆 Results
 
 <a href="#top">[Back to top]</a>
 
-We demonstrate the outstanding generalization capability of ModelName. We strongly recommend referring to our paper for a detailed discussion of ModelName’s performance differences from existing state-of-the-art methods in terms of robustness, residual identity integrity, and identity purity.
+We demonstrate the outstanding generalization capability of IntriFace. We strongly recommend referring to our paper for a detailed discussion of IntriFace’s performance differences from existing state-of-the-art methods in terms of robustness, residual identity integrity, and identity purity.
 
 <div align="center"> 
 </div>
