@@ -202,7 +202,7 @@ In addition, we provide scripts for visualizing Figures 8 and 9 in the paper. Sp
 
 <a href="#top">[Back to top]</a>
 
-We present partial experimental results for FaceShield. For a comprehensive understanding of FaceShield's performance in terms of perceptual fidelity, facial privacy protection, and sampling efficiency, we strongly recommend referring to our [paper](xxx).
+We demonstrate the outstanding generalization capability of ModelName. We strongly recommend referring to our paper for a detailed discussion of ModelName’s performance differences from existing state-of-the-art methods in terms of robustness, residual identity integrity, and identity purity.
 
 <div align="center"> 
 </div>
