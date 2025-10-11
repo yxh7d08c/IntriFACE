@@ -151,7 +151,6 @@ Other datasets are similar to the above structure
 If you choose to store the datasets elsewhere, you can specify the path via `rgb_dir` in `training/test_config.yaml` and `training/train_config.yaml`. You may also specify a different location for configuration files by setting `dataset_json_folder` in the same configuration files.
 
 ### 3. Preprocessing
-
 <a href="#top">[Back to top]</a>
 
 To stabilize data partitioning and labeling, reduce the training cost of ModelName, and enhance its training efficiency, you should first execute the following command to unify multi-source datasets into an intuitive sample list. This operation also facilitates reproducibility for other researchers.
@@ -175,25 +174,19 @@ python compute_statistics.py --data_root your_dataset_path --batch_size 32
 ```
 
 ### 4. Training
-FaceShield follows a two-stage separate training process, first training the Feature Separation Extractor (FSE) and then the Image Reconstructor (IRC).
+<a href="#top">[Back to top]</a>
 
-To begin training FSE, use the following command:
-
-```
-CUDA_VISIBLE_DEVICES=X,Y NPROC_PER_NODE=2 MASTER_PORT=29505 bash train.sh --epochs 10
-```
-
-Replace X and Y with the respective GPU IDs. The log information will be output to the current directory. During training, a checkpoint will be saved every 2000 batches, and the checkpoint weights will be stored in the `checkpoints_FSE` directory. Note that the batch size for FSE training is set to 2, requiring approximately 60GB of GPU memory. You can increase the number of GPUs to speed up FSE training.
-
-Once FSE has converged, you should comment out the stage-I training command in train.sh, and uncomment the stage-II training command. Additionally, modify the checkpoint parameter in the train_Reconstructor.py script to point to the converged FSE weights. Finally, execute the following command to start training IRC:
+To start training, use the following command:
 
 ```
-CUDA_VISIBLE_DEVICES=X,Y NPROC_PER_NODE=2 MASTER_PORT=29505 bash train.sh --epochs 20
+CUDA_VISIBLE_DEVICES=2,3 nohup torchrun --nproc_per_node=2 train.py > train.log 2>&1 &
 ```
 
-During training, a checkpoint will be saved every 500 batches, and the final converged IRC weights can be found in the `checkpoints_IRC` directory.
+Specifically, when resuming training, you can use the `--resume_checkpoint` parameter to specify the model state to restore and set the `--resume_mode` parameter to determine whether to start from a new epoch.
 
 ### 5. Evaluation
+<a href="#top">[Back to top]</a>
+
 If you only want to evaluate the FaceShield, you can use the the [`test.py`](./test.py) code for evaluation. Here is an example:
 
 ```
