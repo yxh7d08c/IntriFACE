@@ -9,7 +9,7 @@
 <div align="center"> 
 </div>
 <div style="text-align:center;">
-  <img src="figures/framework.jpg" style="max-width:60%;">
+  <img src="./framework.jpg" style="max-width:80%;">
 </div>
 
 Welcome to IntriFace, a powerful framework for deepfake face-swapping detection that builds a reliable security barrier between you and the virtual world. Below are its core highlights:
@@ -200,7 +200,7 @@ We demonstrate the outstanding generalization capability of IntriFace. We strong
 <div align="center"> 
 </div>
 <div style="text-align:center;">
-  <img src="figures/effect.jpg" style="max-width:60%;">
+  <img src="./generalization.jpg" style="max-width:80%;">
 </div>
 
 These resources provide a detailed analysis of the training outcomes and offer a deeper understanding of the methodology and findings.
