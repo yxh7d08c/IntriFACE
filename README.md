@@ -2,7 +2,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc/4.0/) ![PyTorch](https://img.shields.io/badge/Pytorch-2.6.0-brightgreen) ![Python](https://img.shields.io/badge/Python-3.10.16-brightgreen)
 
-<b> Authors: Ming Zhang, Yuchen Hui, <a href='https://scholar.google.com/citations?hl=zh-CN&user=y52WOmkAAAAJ&view_op=list_works&sortby=pubdate'>Xiaoguang Li*</a>, Guojia Yu, <a href='https://scholar.google.com/citations?hl=zh-CN&user=FFX0Mj4AAAAJ'>Haonan Yan</a>, <a href='https://scholar.google.com/citations?hl=zh-CN&user=oEcRS84AAAAJ&view_op=list_works&sortby=pubdate'>Hui Li*</a>  </b>
+<b> Authors: Yuchen Hui, Hanyi Wang, Ming Zhang, Jiayu Guo, Zhipeng He, Qingqwen Li, <a href='https://scholar.google.com/citations?hl=zh-CN&user=oEcRS84AAAAJ&view_op=list_works&sortby=pubdate'>Hui Li*</a> </b>
 
 ---
 ## 📚 **Overview**
@@ -12,23 +12,16 @@
   <img src="figures/framework.jpg" style="max-width:60%;">
 </div>
 
-Welcome to IntriFace, a highly generalizable and discriminative deepfake face detector that establishes a reliable barrier between you and the synthetic world. The following provides key information about this detector: 
+Welcome to IntriFace, a powerful framework for deepfake face-swapping detection that builds a reliable security barrier between you and the virtual world. Below are its core highlights:
 
-> 📌 **New Perspective**: *IntriFace* captures the intrinsic commonality among deepfake faces rather than relying on low-level visual artifacts, thereby maintaining strong generalization across numerous unseen scenarios.
-> 
-> 📌 **Perceptual Removal**: *IntriFace* effectively eliminates perceptual interference embedded in facial images, enabling the extraction of purer identity representations.
-> 
-> 📌 **Advanced Purification**: *IntriFace* suppresses irrelevant identity components while enhancing relevant ones within the extracted representation, isolating the most discriminative identity features.
-> 
-> 📌 **Outstanding Performance**: Extensive experiments demonstrate that *IntriFace* achieves remarkable results in generalization, robustness, and identity discriminability, highlighting its potential as a universal solution for deepfake face detection.
-
-
----
-
-## 😊 **IntriFace Updates**
-> - [ ] To be supplemented code after acceptance...
+> 📌 **More Reasonable Detection Focus**: Instead of relying on visual or frequency-domain artifacts, IntriFace takes the identity consistency difference between real and fake faces as the core detection basis. This ensures strong generalization, even on unseen datasets and diffusion-model-generated forgeries.
 >
-> - [x] 14/11/2025: *First version pre-released for this open source code.* 
+> 📌 **Robust Perceptual Interference Suppression**: Equipped with a dedicated encoder, it extracts identity information while suppressing irrelevant interference, focusing on core identity features to avoid misdetection.
+>
+> 📌 **Advanced Feature Purification**: Its specially designed purification network filters redundant noise and amplifies key discriminative features, expanding the feature gap between real and fake faces.
+>
+> 📌 **Excellent Comprehensive Performance**: Experiments show IntriFace outperforms other SOTA methods in generalization and robustness. It can accurately recover residual identity information, clearly model identity consistency differences, and demonstrate great potential as a universal detection solution.
+
 ---
 
 <font size=4><b> Table of Contents </b></font>
@@ -67,18 +60,19 @@ All datasets used in IntriFace can be downloaded from their corresponding origin
 
 The download links and detailed information for each dataset are summarized below:
 
-| Dataset | Real Videos | Fake Videos | Total Videos | Rights Cleared | Total Subjects | Synthesis Methods | Original Repository |
+| Dataset | Real Videos | Fake Videos | Total Videos/Images | Rights Cleared | Total Subjects | Synthesis Methods | Original Repository |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | FaceForensics++ | 1000 | 4000 | 5000 | NO | N/A | 4 | [Hyper-link](https://github.com/ondyari/FaceForensics/tree/master/dataset) |
 | FaceShifter | 1000 | 1000 | 2000 | NO | N/A | 1 | [Hyper-link](https://github.com/ondyari/FaceForensics/tree/master/dataset) |
-| DeepfakeDetection | 363 | 3000 | 3363 | YES | 28 | 5 | [Hyper-link](https://github.com/ondyari/FaceForensics/tree/master/dataset) |
 | Deepfake Detection Challenge (Preview) | 1131 | 4119 | 5250 | YES | 66 | 2 | [Hyper-link](https://ai.facebook.com/datasets/dfdc/) |
 | Deepfake Detection Challenge | 23654 | 104500 | 128154 | YES | 960 | 8 | [Hyper-link](https://www.kaggle.com/c/deepfake-detection-challenge/data) |
-| CelebDF-v1 | 408 | 795 | 1203 | NO | N/A | 1 | [Hyper-link](https://ours) |
-| CelebDF-v2 | 590 | 5639 | 6229 | NO | 59 | 1 | [Hyper-link](https://ours) |
-| UADFV | 49 | 49 | 98 | NO | 49 | 1 | [Hyper-link](https://ours) |
+| CelebDF-v1 | 408 | 795 | 1203 | NO | N/A | 1 | [Hyper-link](https://github.com/yuezunli/celeb-deepfakeforensics/tree/master/Celeb-DF-v1) |
+| CelebDF-v2 | 590 | 5639 | 6229 | NO | 59 | 1 | [Hyper-link](https://github.com/yuezunli/celeb-deepfakeforensics/tree/master/Celeb-DF-v2) |
+| UADFV | 49 | 49 | 98 | NO | 49 | 1 | [Hyper-link](https://www.kaggle.com/datasets/adityakeshri9234/uadfv-dataset) |
+| DF40 | 1590 | 0.1M+ | 0.1M+ | NO | N/A | 40 | [Hyper-link](https://github.com/YZY-stack/DF40) |
+| VGGFace | N/A | N/A | 2.6M+ | NO | 2600 | N/A | [Hyper-link](https://github.com/NNNNAI/VGGFace2-HQ) |
+| CASIA-FaceV5 | N/A | N/A | 2500 | NO | 600 | N/A | [Hyper-link](https://huggingface.co/datasets/JustinLeee/Cleaned_Augmented_CASIA_FaceV5) |
 
-In addition, the image dataset CASIA-FACEV5 used in the evaluation can be downloaded [here](https://ours).
 
 🛡️ **Copyright of the above datasets belongs to their original providers.**
 
@@ -86,7 +80,7 @@ After downloading, please store the datasets in the `datasets/rgb` directory and
 
 ```
 rgb
-├── Celeb-DF-v2 (if you download my processed data)
+├── Celeb-DF-v2
 |   ├── Celeb-real
 |   |   ├── frames
 |   |   |   ├── id0_0000
@@ -122,7 +116,7 @@ rgb
 |   |   |   ├── xxxxx
 |   |   |   ├── ...
 |   ├── List_of_testing_videos.txt
-├── UADFV (if you download my processed data)
+├── UADFV
 |   ├── fake
 |   |   ├── frames
 |   |   |   ├── 0000_fake
@@ -199,7 +193,6 @@ In addition, we provide scripts for visualizing Figures 8 and 9 in the paper. Sp
 3. **visualize_tsne.py**: Visualizes the pretrained model’s discrimination capability between real and fake samples.
 
 ## 🏆 Results
-
 <a href="#top">[Back to top]</a>
 
 We demonstrate the outstanding generalization capability of IntriFace. We strongly recommend referring to our paper for a detailed discussion of IntriFace’s performance differences from existing state-of-the-art methods in terms of robustness, residual identity integrity, and identity purity.
