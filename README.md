@@ -2,7 +2,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc/4.0/) ![PyTorch](https://img.shields.io/badge/Pytorch-2.6.0-brightgreen) ![Python](https://img.shields.io/badge/Python-3.10.16-brightgreen)
 
-<b> Authors: Yuchen Hui, Hanyi Wang, Ming Zhang, Jiayu Guo, Zhipeng He, Qingqwen Li, <a href='https://scholar.google.com/citations?hl=zh-CN&user=oEcRS84AAAAJ&view_op=list_works&sortby=pubdate'>Hui Li*</a> </b>
+<b> Authors: Yuchen Hui, Zhipeng He, Ming Zhang, Chunlei Peng, Qingqwen Li, Jiayu Guo, <a href='https://scholar.google.com/citations?hl=zh-CN&user=oEcRS84AAAAJ&view_op=list_works&sortby=pubdate'>Hui Li*</a> </b>     
 
 ---
 ## 📚 **Overview**
