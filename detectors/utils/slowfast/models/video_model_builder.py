@@ -149,7 +149,6 @@ class SlowFast(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
     """
 
     def __init__(self, cfg):
@@ -394,11 +393,9 @@ class ResNet(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -582,11 +579,9 @@ class ResNetVar(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -759,11 +754,9 @@ class ResNetBase(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -941,11 +934,9 @@ class ResNetFreeze(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -1129,11 +1120,9 @@ class ResUNet(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -1350,11 +1339,9 @@ class ResUNetLight(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -1579,11 +1566,9 @@ class ResUNetLightFix(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -1813,11 +1798,8 @@ class ResUNetContinus(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
-
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -2047,11 +2029,9 @@ class ResUNetCommon(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -2281,11 +2261,9 @@ class ResUNetCommon2(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
@@ -2514,11 +2492,9 @@ class ResUNetStrong(nn.Module):
 
     Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
     "SlowFast networks for video recognition."
-    https://arxiv.org/pdf/1812.03982.pdf
 
     Xiaolong Wang, Ross Girshick, Abhinav Gupta, and Kaiming He.
     "Non-local neural networks."
-    https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(self, cfg):
