@@ -38,7 +38,6 @@ class SubBatchNorm3d(nn.Module):
     """
     The standard BN layer computes stats across all examples in a GPU. In some
     cases it is desirable to compute stats across only a subset of examples
-    (e.g., in multigrid training https://arxiv.org/abs/1912.00998).
     SubBatchNorm3d splits the batch dimension into N splits, and run BN on
     each of them separately (so that the stats are computed on each subset of
     examples (1/N of batch) independently. During evaluation, it aggregates
