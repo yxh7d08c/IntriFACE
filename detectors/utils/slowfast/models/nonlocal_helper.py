@@ -14,7 +14,6 @@ class Nonlocal(nn.Module):
     computes the response at a position as a weighted sum of the
     features at all positions. This building block can be plugged into
     many computer vision architectures.
-    More details in the paper: https://arxiv.org/pdf/1711.07971.pdf
     """
 
     def __init__(
