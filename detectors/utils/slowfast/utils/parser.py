@@ -20,7 +20,6 @@ def parse_args():
         init_method (str): initialization method to launch the job with multiple
             devices. Options includes TCP or shared file-system for
             initialization. details can be find in
-            https://pytorch.org/docs/stable/distributed.html#tcp-initialization
         cfg (str): path to the config file.
         opts (argument): provide addtional options from the command line, it
             overwrites the config loaded from file.
