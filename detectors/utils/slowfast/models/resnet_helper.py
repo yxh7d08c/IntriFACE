@@ -351,7 +351,6 @@ class ResBlock(nn.Module):
         ResBlock class constructs redisual blocks. More details can be found in:
             Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
             "Deep residual learning for image recognition."
-            https://arxiv.org/abs/1512.03385
         Args:
             dim_in (int): the channel dimensions of the input.
             dim_out (int): the channel dimension of the output.
@@ -452,7 +451,6 @@ class ResStage(nn.Module):
 
         Christoph Feichtenhofer, Haoqi Fan, Jitendra Malik, and Kaiming He.
         "SlowFast networks for video recognition."
-        https://arxiv.org/pdf/1812.03982.pdf
     """
 
     def __init__(
