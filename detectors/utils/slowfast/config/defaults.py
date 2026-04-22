@@ -541,7 +541,6 @@ _C.AVA.IMG_PROC_BACKEND = "cv2"
 
 # ---------------------------------------------------------------------------- #
 # Multigrid training options
-# See https://arxiv.org/abs/1912.00998 for details about multigrid training.
 # ---------------------------------------------------------------------------- #
 _C.MULTIGRID = CfgNode()
 
@@ -566,7 +565,6 @@ _C.MULTIGRID.LONG_CYCLE_FACTORS = [
 
 # While a standard BN computes stats across all examples in a GPU,
 # for multigrid training we fix the number of clips to compute BN stats on.
-# See https://arxiv.org/abs/1912.00998 for details.
 _C.MULTIGRID.BN_BASE_SIZE = 8
 
 # Multigrid training epochs are not proportional to actual training time or
