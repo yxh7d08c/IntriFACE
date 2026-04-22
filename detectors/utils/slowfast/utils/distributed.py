@@ -76,7 +76,6 @@ def init_process_group(
             "tcp": use tcp address to initialize the groups across different
         dist_backend (string): backend to use for distributed training. Options
             includes gloo, mpi and nccl, the details can be found here:
-            https://pytorch.org/docs/stable/distributed.html
     """
     # Sets the GPU to use.
     torch.cuda.set_device(local_rank)
