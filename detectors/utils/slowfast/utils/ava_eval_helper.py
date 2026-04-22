@@ -18,7 +18,6 @@
 # ActivityNet
 # Copyright (c) 2015 ActivityNet
 # Licensed under The MIT License
-# [see https://github.com/activitynet/ActivityNet/blob/master/LICENSE for details]
 # --------------------------------------------------------
 
 """Helper functions for AVA evaluation."""
@@ -52,7 +51,6 @@ def make_image_key(video_id, timestamp):
 
 def read_csv(csv_file, class_whitelist=None, load_score=False):
     """Loads boxes and class labels from a CSV file in the AVA format.
-    CSV file format described at https://research.google.com/ava/download.html.
     Args:
       csv_file: A file object.
       class_whitelist: If provided, boxes corresponding to (integer) class labels
