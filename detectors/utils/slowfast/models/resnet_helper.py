@@ -508,7 +508,6 @@ class ResStage(nn.Module):
             nonlocal_group (list): list of number of p nonlocal groups. Each
                 number controls how to fold temporal dimension to batch
                 dimension before applying nonlocal transformation.
-                https://github.com/facebookresearch/video-nonlocal-net.
             instantiation (string): different instantiation for nonlocal layer.
                 Supports two different instantiation method:
                     "dot_product": normalizing correlation matrix with L2.
