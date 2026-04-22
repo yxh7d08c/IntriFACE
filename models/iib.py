@@ -1,15 +1,3 @@
-'''
-The code for calculating mutual information refers to the implementation of this paper:
-@inproceedings{
-    schulz2020iba,
-    title={Restricting the Flow: Information Bottlenecks for Attribution},
-    author={Schulz, Karl and Sixt, Leon and Tombari, Federico and Landgraf, Tim},
-    booktitle={International Conference on Learning Representations},
-    year={2020},
-    url={https://openreview.net/forum?id=S1xWh1rYwB}
-}
-'''
-
 import math
 import torch
 import torch.nn as nn
