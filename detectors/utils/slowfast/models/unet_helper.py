@@ -17,7 +17,6 @@ class Conv3dReLU(nn.Sequential):
         if use_batchnorm == "inplace" and InPlaceABN is None:
             raise RuntimeError(
                 "In order to use `use_batchnorm='inplace'` inplace_abn package must be installed. "
-                + "To install see: https://github.com/mapillary/inplace_abn"
             )
 
         conv = nn.Conv3d(
