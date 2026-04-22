@@ -101,10 +101,6 @@ def add_gaussian_noise(ins, mean=0, stddev=0.2):
 
 @BACKBONE.register_module(module_name="xception")
 class Xception(nn.Module):
-    """
-    Xception optimized for the ImageNet dataset, as specified in
-    https://arxiv.org/pdf/1610.02357.pdf
-    """
 
     def __init__(self, xception_config):
         """ Constructor
