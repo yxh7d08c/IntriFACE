@@ -28,7 +28,6 @@ def run(
         backend (string): three distributed backends ('nccl', 'gloo', 'mpi') are
             supports, each with different capabilities. Details can be found
             here:
-            https://pytorch.org/docs/stable/distributed.html
         cfg (CfgNode): configs. Details can be found in
             slowfast/config/defaults.py
     """
